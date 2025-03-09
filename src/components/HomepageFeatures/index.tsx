@@ -18,7 +18,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Explore Syllabus & Notes',
     Svg: require('@site/static/img/book.svg').default,
-    link: '/docs/study',
+    link: '/docs/study/विषय%20वस्तु',
     description: (
       <>
         Discover a collection of comprehensive syllabus and detailed notes that will guide you through various topics. This section serves as an invaluable resource to quickly get the information you need to advance your learning journey.

@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 const title = 'Bhavishya the vision'
-const projectName = 'bhavishya-the-vision';
+const projectName = 'bhavishyaTheVision';
 
 const config: Config = {
   title,
