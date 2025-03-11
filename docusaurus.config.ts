@@ -49,7 +49,20 @@ const config: Config = {
     ],
   ],
 
-
+  
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 
   themeConfig: {
 
@@ -72,9 +85,6 @@ const config: Config = {
           sidebarId: 'quizSidebar',
           position: 'left',
           label: 'Quizes',
-        },
-        {
-          to: '/about', position: 'left', label: 'About us'
         }
 
       ],
