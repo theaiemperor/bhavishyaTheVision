@@ -5,6 +5,7 @@ import { formatTime, IAnswer, IQuestion, IResult } from "../_shared/utils";
 import Confetti from "../Result/Confetti";
 import ReviewModal from "../Result/ReviewModal";
 import ScoreCircle from "../Result/ScoreCircle";
+import GradientText from "../../global/GradientText";
 
 
 
@@ -114,28 +115,31 @@ export default function (props: Props) {
                 result.score > 95 && <Confetti />
             }
             <div className={`transition-all duration-500 ${reviewSlideIn ? 'transform -translate-x-full absolute inset-0 p-8' : ''}`}>
-                <h2 className="text-2xl font-bold mb-4 text-center">Quiz Completed!</h2>
+                <GradientText kind='single' className='mb-4 text-center text-2xl font-bold'>
+                    Quiz Completed!
+                </GradientText>
+
                 <ScoreCircle score={result.score} />
 
-                <div className="mb-8 text-left p-4 border rounded-lg bg-white">
+                <div className="mb-8 text-left p-4 border rounded-lg ">
                     <div className="grid grid-cols-2 gap-4">
-                        <div>
+                        <div className="flex flex-col">
                             <p className="text-sm text-gray-600">Correct</p>
                             <p className="font-medium text-green-600 ml-3">{result.correct}</p>
                         </div>
-                        <div>
+                        <div className="flex flex-col">
                             <p className="text-sm text-gray-600">Incorrect</p>
                             <p className="font-medium text-red-600 ml-3">{result.incorrect}</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4 mt-2">
-                        <div>
+                        <div className="flex flex-col">
                             <p className="text-sm text-gray-600">Partial Correct</p>
                             <p className="font-medium text-blue-600 ml-3">{result.partial}</p>
                         </div>
-                        <div>
+                        <div className="flex flex-col">
                             <p className="text-sm text-gray-600">Time Taken</p>
-                            <p className="font-medium  ml-3">{formatTime(props.timeTaken) } Minutes</p>
+                            <p className="font-medium  ml-3">{formatTime(props.timeTaken)} Minutes</p>
                         </div>
 
                     </div>

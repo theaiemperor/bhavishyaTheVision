@@ -73,7 +73,7 @@ export default function ({ quizId, questions, onQuizFinish, defaultAnswers, defa
                 <Box className="text-sm font-semibold">
                     Question {currentQuestionIndex + 1}/{questions.length}
                 </Box>
-                <Box className={`text-sm font-mono ${timeRemaining < 60 ? 'text-red-600 animate-pulse' : 'text-gray-700'}`}>
+                <Box className={`text-sm font-mono ${timeRemaining < 60 ? 'text-red-600 animate-pulse' : ''}`}>
                     Time: {formatTime(timeRemaining)}
                 </Box>
             </Box>

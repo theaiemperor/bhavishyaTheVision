@@ -1,7 +1,7 @@
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import { useState } from 'react';
-import { Box, Button, Divider, Typography } from '@mui/joy';
+import { Box, Button, Card, Divider, Typography } from '@mui/joy';
 import { IResult } from '../_shared/utils';
 
 
@@ -14,17 +14,14 @@ interface IReviewAnswer extends IResult {
 function ReviewAnswers({ index, question, correct, user, type }: IReviewAnswer) {
 
 
-    // Set border color based on the result
-
-
     const borderColor = (type === 'correct' ? '#22c55e' : type === 'partial' ? '#3b82f6' : '#ef4444');
 
 
     const isMultiSelect = Array.isArray(correct);
 
     return (
-        <Box sx={{ borderLeft: '4px solid ' + borderColor }} className={`p-4 mb-4 bg-opacity-1 bg-gray-100 rounded-lg w-full`}>
-            <div className="mb-2 font-semibold text-gray-800">{index + '. '}{question}</div>
+        <Card sx={{ borderLeft: '4px solid ' + borderColor }} className={`p-4 mb-4 bg-opacity-1  rounded-lg w-full`}>
+            <div className="mb-2 font-semibold ">{index + '. '}{question}</div>
             <div className="text-xs font-bold">
                 <div className="mt-2 ">
                     <div className=" font-normal pr-2">Your Answer:</div>
@@ -58,7 +55,7 @@ function ReviewAnswers({ index, question, correct, user, type }: IReviewAnswer) 
                 </div>
 
             </div>
-        </Box>
+        </Card>
     );
 };
 
@@ -96,9 +93,9 @@ export default function ({ data }: { data: IResult[] }) {
                         }
                     </Box>
                     <Box className="flex justify-center sticky -bottom-1 ">
-
-
-                        <Button onClick={() => { setOpen(false) }} className='hover:scale-105 rounded-xl w-1/3 '>
+                        <Button 
+                        onClick={() => { setOpen(false) }} 
+                        className='duration-300 hover:scale-105 rounded-xl w-1/3 '>
                             OK
                         </Button>
                     </Box>

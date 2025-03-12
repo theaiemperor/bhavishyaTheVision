@@ -1,4 +1,4 @@
-import { Button } from "@mui/joy";
+import { Box, Button, Typography } from "@mui/joy";
 import History from "../_shared/History";
 import QuizContainer from "../_shared/QuizContainer";
 import { IQuiz, formatTime } from "../_shared/utils";
@@ -17,12 +17,11 @@ export default function ({ currentState, onStart, onResume, ...quiz }: Props) {
 
     return <div>
         <div className="flex flex-col items-center justify-center w-full">
-            <h1 className="text-2xl font-bold mb-6 text-center">{quiz.title}</h1>
             <QuizContainer>
-                <div className="flex-1">
-                    <div className="mb-6 text-gray-700">{quiz.description}</div>
-                    <div className="mb-6 text-sm text-gray-600">Time limit: {formatTime(quiz.timeLimit)}</div>
-                </div>
+                <Box className="flex flex-col gap-5 my-3 ">
+                    <Typography >{quiz.description}</Typography>
+                    <Typography level="body-xs" >Time limit: {formatTime(quiz.timeLimit)} Minutes</Typography>
+                </Box>
                 <div className="flex gap-5">
                     {
                         currentState === 'resume' &&
@@ -37,6 +36,7 @@ export default function ({ currentState, onStart, onResume, ...quiz }: Props) {
 
                     <Button
                         fullWidth
+                        className="scale-95 duration-300 hover:shadow-lg hover:scale-x-100"
                         onClick={onStart}
                         sx={{ height: 45, borderRadius: '30px' }}>
                         Start New Quiz

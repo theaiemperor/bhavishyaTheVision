@@ -1,3 +1,4 @@
+import { Box, useTheme } from '@mui/joy';
 import { getColor } from '../_shared/utils';
 
 function ScoreCircle({ score }: { score: number }) {
@@ -22,19 +23,21 @@ function ScoreCircle({ score }: { score: number }) {
   // Calculate the tip index based on score (clamped between 0 and 9)
   const tipIndex = Math.min(9, Math.floor(score / 10));
   const tip = tips[tipIndex];
+  const theme = useTheme();
 
   return (
     <div className="flex flex-col items-center">
-      <div
+      <Box
         className="w-40 h-40 rounded-full flex items-center justify-center shadow-lg"
         style={{
-          background: `conic-gradient(${color} ${score}%, #f1f1f1 ${score}% 100%)`
+          background: `conic-gradient(${color} ${score}%, ${theme.palette.background.surface} ${score}% 100%)`,
+          border: '2px solid'
         }}
       >
-        <div className="text-4xl font-bold text-gray-800">
+        <Box className="text-4xl font-bold ">
           {score.toFixed(0)}%
-        </div>
-      </div>
+        </Box>
+      </Box>
       <div className="my-4 text-lg font-bold">
         {tip}
       </div>

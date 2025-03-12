@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { IQuestion, IQuiz, IAnswer } from "./_shared/utils";
+import {  IAnswer } from "./_shared/utils";
 import QuestionScreen from "./screens/QuestionScreen";
 import StartScreen from "./screens/StartScreen";
 import ResultScreen from "./screens/ResultScreen";
-import { Box } from "@mui/joy";
+import sampleQuiz from "./_shared/sampleQuiz";
 
 
 type currentState = 'start' | 'resume' | 'running' | 'result';
@@ -12,20 +12,7 @@ type currentState = 'start' | 'resume' | 'running' | 'result';
 
 export default function () {
 
-
-
-    const q: IQuestion[] = [
-        { question: 'Who are you?', correct: 'Arman', options: ['Arman', 'Me'] },
-        { question: 'Where are you?', correct: ['Home', 'Work'], options: ['Home', 'Work', 'other'] },
-    ]
-
-    const quiz: IQuiz = {
-        id: '1',
-        title: 'My Quize',
-        description: 'This is very unique quize',
-        timeLimit: 50,
-        questions: q
-    }
+    const quiz = sampleQuiz;
 
 
     const [currentState, setCurrentState] = useState<currentState>('start');
@@ -34,15 +21,12 @@ export default function () {
 
 
     useEffect(() => {
-
-
-
         try {
 
             if (typeof window !== undefined) {
 
                 const data = localStorage.getItem(`quiz_progress_${quiz.id}`)
-                console.log({data})
+                console.log({ data })
 
                 if (!data) return;
 
@@ -66,6 +50,13 @@ export default function () {
 
 
     }, [])
+
+
+    useEffect(() => {
+        if (currentState === 'start') {
+            setTime(quiz.timeLimit)
+        }
+    }, [currentState])
 
 
     function handleResume() {

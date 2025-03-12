@@ -26,9 +26,6 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -40,6 +37,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -47,9 +45,9 @@ const config: Config = {
       } satisfies Preset.Options,
 
     ],
+
   ],
 
-  
   plugins: [
     async function myPlugin(context, options) {
       return {
@@ -66,6 +64,12 @@ const config: Config = {
 
   themeConfig: {
 
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true
+      },
+    },
     navbar: {
       title: 'Home',
       logo: {
@@ -79,25 +83,34 @@ const config: Config = {
           sidebarId: 'studySidebar',
           position: 'left',
           label: 'Study',
+
         },
         {
           type: 'docSidebar',
           sidebarId: 'quizSidebar',
           position: 'left',
           label: 'Quizes',
+        },
+        {
+          to: 'contact',
+          label: 'Contact us'
         }
-
       ],
     },
+
+
     footer: {
       style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} ${title}, Inc. `,
     },
+
+
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
 };
 
 export default config;
